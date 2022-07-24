@@ -1,0 +1,32 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.formulario{
+    margin-top: 5rem;
+    .campo{
+        display: block;
+        margin-bottom: 2rem;
+        @include m.telefono{
+            display: flex;
+            align-items: center;
+        }
+
+        label{
+            display: block;
+            margin-bottom: 1rem;
+            @include m.telefono{
+                flex: 0 0 10rem;
+                margin-bottom: 0;
+            }
+        }
+    
+        input{
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background-color: lighten(v.$gris, 40%);
+            width: 100%;
+        }
+    }
+
+}
