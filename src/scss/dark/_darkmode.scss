@@ -17,7 +17,6 @@
     }
 
     .descripcion-pagina,
-    .formulario .campo input,
     .nombre-pagina,
     .dashboard .enlace{
         color: darken(v.$grisClaro, 15%);
@@ -25,7 +24,7 @@
 
     .formulario .campo input{
         background-color: lighten($grisOscuro, 15%);
-        color: v.$grisOscuro;
+        color: v.$blanco;
         &::placeholder{
             color: darken(v.$grisClaro, 20%);
         }

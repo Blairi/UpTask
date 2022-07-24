@@ -8,10 +8,20 @@ class Email {
     protected $email;
     protected $nombre;
     protected $token;
-    protected $dominio = "http://localhost";
+    protected $dominio;
+    protected $mailHost;
+    protected $mailPort;
+    protected $mailUsername;
+    protected $mailPass;
 
     public function __construct($email, $nombre, $token)
     {
+        $this->dominio = $_ENV['APP_HOST'];
+        $this->mailHost = $_ENV['MAIL_HOST'];
+        $this->mailPort = $_ENV['MAIL_PORT'];
+        $this->mailUsername = $_ENV['MAIL_USERNAME'];
+        $this->mailPass = $_ENV['MAIL_PASS'];
+
         $this->email = $email;
         $this->nombre = $nombre;
         $this->token = $token;
@@ -21,14 +31,15 @@ class Email {
     {
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.mailtrap.io';
+        $mail->Host = $_ENV['MAIL_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = '527672c9ae1331';
-        $mail->Password = 'e85b4e1fdd44ed';
+        $mail->Port = $_ENV['MAIL_PORT'];
+        $mail->Username = $_ENV['MAIL_USERNAME'];
+        $mail->Password = $_ENV['MAIL_PASS'];
 
-        $mail->setFrom('cuentas@uptask.com');
-        $mail->addAddress('cuentas@uptask.com', 'uptask.com');
+        $mail->setFrom($_ENV['MAIL_USERNAME'], 'UpTask');
+        $mail->addAddress($this->email, $this->nombre);
+
         $mail->Subject = 'Confirma tu Cuenta';
 
         $mail->isHTML(true);
@@ -49,14 +60,15 @@ class Email {
     {
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.mailtrap.io';
+        $mail->Host = $_ENV['MAIL_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = '527672c9ae1331';
-        $mail->Password = 'e85b4e1fdd44ed';
+        $mail->Port = $_ENV['MAIL_PORT'];
+        $mail->Username = $_ENV['MAIL_USERNAME'];
+        $mail->Password = $_ENV['MAIL_PASS'];
 
-        $mail->setFrom('cuentas@uptask.com');
-        $mail->addAddress('cuentas@uptask.com', 'uptask.com');
+        $mail->setFrom($_ENV['MAIL_USERNAME'], 'UpTask');
+        $mail->addAddress($this->email, $this->nombre);
+
         $mail->Subject = 'Restablece tu Password';
 
         $mail->isHTML(true);

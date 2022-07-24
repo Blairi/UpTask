@@ -316,11 +316,6 @@ const dominio = window.location.origin;
             const resultado = await respuesta.json();
             
             if(resultado.resultado){
-                // mostrarAlerta(
-                //     resultado.mensaje,
-                //     resultado.tipo,
-                //     document.querySelector('.contenedor-nueva-tarea')
-                // );
 
                 Swal.fire('¡Eliminado!', resultado.mensaje, 'success');
 
@@ -369,7 +364,6 @@ const dominio = window.location.origin;
                 tareas = [...tareas, tareaObj];
                 mostrarTareas();
 
-                // console.log(tareaObj);
             }
 
         } catch (error) {
